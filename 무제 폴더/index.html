@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부산대 밀양캠퍼스 시내버스 시간표</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>부산대 밀양캠퍼스 시내버스 시간표</h1>
+
+      <div id="info-message" class="info-box message">
+        <!-- ID: info-message -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>페이지 로딩 중...</span>
+      </div>
+
+      <div id="day-type-controls" class="controls-group">
+        <button id="weekday-schedule-btn" type="button">
+          <!-- ID: weekday-schedule-btn -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          평일
+        </button>
+        <button id="weekend-schedule-btn" type="button">
+          <!-- ID: weekend-schedule-btn -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            ></path>
+          </svg>
+          주말·공휴일
+        </button>
+      </div>
+
+      <div id="route-controls" class="controls-group">
+        <button id="wangpyeon-btn" type="button" class="active">
+          <!-- ID: wangpyeon-btn -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 448 512"
+          >
+            <path
+              d="M224 0C348.8 0 448 35.2 448 80l0 16 0 320c0 17.7-14.3 32-32 32l0 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-32-192 0 0 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32L0 96 0 80C0 35.2 99.2 0 224 0zM64 128l0 128c0 17.7 14.3 32 32 32l256 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32L96 96c-17.7 0-32 14.3-32 32zM80 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+            />
+          </svg>
+          밀양 → 부산대
+        </button>
+        <button id="bokpyeon-btn" type="button">
+          <!-- ID: bokpyeon-btn -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 448 512"
+          >
+            <path
+              d="M224 0C348.8 0 448 35.2 448 80l0 16 0 320c0 17.7-14.3 32-32 32l0 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-32-192 0 0 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32l0-32c-17.7 0-32-14.3-32-32L0 96 0 80C0 35.2 99.2 0 224 0zM64 128l0 128c0 17.7 14.3 32 32 32l256 0c17.7 0 32-14.3 32-32l0-128c0-17.7-14.3-32-32-32L96 96c-17.7 0-32 14.3-32 32zM80 400a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm288 0a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"
+            />
+          </svg>
+          부산대 → 밀양
+        </button>
+      </div>
+
+      <div id="status" class="info-box status-box">
+        <!-- ID: status -->
+        <!-- 상태 정보가 여기에 표시됩니다 -->
+      </div>
+
+      <div class="show-timetable-button-container">
+        <button id="show-timetable-btn" type="button">
+          <!-- ID: show-timetable-btn -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 3h18v18H3z"></path>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="3" y1="15" x2="21" y2="15"></line>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <line x1="15" y1="3" x2="15" y2="21"></line>
+          </svg>
+          전체 시간표 보기
+        </button>
+      </div>
+
+      <!-- 시간표 컨테이너들 (ID 정확히 확인) -->
+      <div id="weekday-wangpyeon-timetable" class="timetable-container">
+        <h2>밀양 → 부산대 밀양캠퍼스 (평일)</h2>
+        <table class="wangpyeon-table">
+          <thead>
+            <tr>
+              <th>연번</th>
+              <th>영남루</th>
+              <th>밀양역</th>
+              <th>부산대</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div id="weekday-bokpyeon-timetable" class="timetable-container">
+        <h2>부산대 밀양캠퍼스 → 밀양 (평일)</h2>
+        <table class="bokpyeon-table">
+          <thead>
+            <tr>
+              <th>연번</th>
+              <th>부산대</th>
+              <th>밀양역</th>
+              <th>영남루</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div id="weekend-wangpyeon-timetable" class="timetable-container">
+        <h2>밀양 → 부산대 밀양캠퍼스 (주말·공휴일)</h2>
+        <table class="wangpyeon-table">
+          <thead>
+            <tr>
+              <th>연번</th>
+              <th>영남루</th>
+              <th>밀양역</th>
+              <th>부산대</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div id="weekend-bokpyeon-timetable" class="timetable-container">
+        <h2>부산대 밀양캠퍼스 → 밀양 (주말·공휴일)</h2>
+        <table class="bokpyeon-table">
+          <thead>
+            <tr>
+              <th>연번</th>
+              <th>부산대</th>
+              <th>밀양역</th>
+              <th>영남루</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2025 부산대학교 밀양캠퍼스 버스 시간표 | 평일 및 주말/공휴일 운행 |
+      <a href="http://bis.miryang.go.kr" target="_blank"
+        >실시간 버스정보 바로가기</a
+      >
+    </div>
+
+    <script src="timetable_data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
